@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag1 on Gary Larson</title>
+    <link>/tags/tag1/</link>
+    <description>Recent content in Tag1 on Gary Larson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
+    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test new post via add-in menu</title>
+      <link>/blogs_blog/test-new-post-via-add-in-menu/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs_blog/test-new-post-via-add-in-menu/</guid>
+      <description>To write a new post (like this one) using blogdown in RStudio, just click “Addins” -&amp;gt; “New Post” near the top of the RStudio window.
+Here’s some junk R code. In the chunk options, just set eval=FALSE.
+plot(x) I should get used to writing (R) markdown pretty quickly, after translating a few of my plot posts.
+Just for fun, here’s a plot.
+plot(x &amp;lt;- seq(-10,10,length.out=100), sin(x), type=&amp;#39;l&amp;#39;, xlab=&amp;#39;x&amp;#39;, ylab=&amp;#39;sin(x)&amp;#39;) And here’s a picture, to test: Maybe I can do it in a different size (200px):</description>
+    </item>
+    
+  </channel>
+</rss>
