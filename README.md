@@ -1,1 +1,0 @@
-# garylarson.github.io
