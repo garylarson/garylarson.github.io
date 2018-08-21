@@ -31,12 +31,18 @@ This document is a brief primer on using go templates.">
     <h1 class="site-title"><a href="/">Gary Larson</a></h1>
     <ul class="site-navi-items">
       <li class="site-navi-item-research"><a href="/research/" title="Research">Research</a></li>
-      <li class="site-navi-item-blogs-home"><a href="/blogs-home/" title="Blogs">Blogs</a></li>
+      <li class="site-navi-item-blogs-blog"><a href="/blogs_blog/" title="Blogs">Blogs</a></li>
       <li class="site-navi-item-teaching"><a href="/teaching/" title="Teaching">Teaching</a></li>
     </ul>
   </nav>
+  
+  <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
 </header>
 <hr class="site-header-bottom">
+
 
   <div class="main" role="main">
     <article class="article">
@@ -154,45 +160,29 @@ functions.</p>
 <p><strong>Go variables and functions are accessible within {{ }}</strong></p>
 
 <p>Accessing a predefined variable &ldquo;foo&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ foo }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ foo }}
+</code></pre>
+
 <p><strong>Parameters are separated using spaces</strong></p>
 
 <p>Calling the add function with input of 1, 2:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ add 1 2 }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ add 1 2 }}
+</code></pre>
+
 <p><strong>Methods and fields are accessed via dot notation</strong></p>
 
 <p>Accessing the Page Parameter &ldquo;bar&rdquo;</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ .Params.bar }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ .Params.bar }}
+</code></pre>
+
 <p><strong>Parentheses can be used to group items together</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if or (isset .Params &#34;alt&#34;) (isset .Params &#34;caption&#34;) }} Caption {{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ if or (isset .Params &quot;alt&quot;) (isset .Params &quot;caption&quot;) }} Caption {{ end }}
+</code></pre>
+
 <h2 id="variables">Variables</h2>
 
 <p>Each go template has a struct (object) made available to it. In hugo each
@@ -201,25 +191,16 @@ page you are rendering. More details are available on the
 variables page.</p>
 
 <p>A variable is accessed by referencing the variable name.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">&lt;title&gt;{{ .Title }}&lt;/title&gt;</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>&lt;title&gt;{{ .Title }}&lt;/title&gt;
+</code></pre>
+
 <p>Variables can also be defined and referenced.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ $address := &#34;123 Main St.&#34;}}
-{{ $address }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ $address := &quot;123 Main St.&quot;}}
+{{ $address }}
+</code></pre>
+
 <h2 id="functions">Functions</h2>
 
 <p>Go template ship with a few functions which provide basic functionality. The go
@@ -231,14 +212,10 @@ followed by the required parameters separated by spaces. Template
 functions cannot be added without recompiling hugo.</p>
 
 <p><strong>Example:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ add 1 2 }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ add 1 2 }}
+</code></pre>
+
 <h2 id="includes">Includes</h2>
 
 <p>When including another template you will pass to it the data it will be
@@ -247,14 +224,10 @@ include a trailing dot. The templates location will always be starting at
 the /layout/ directory within Hugo.</p>
 
 <p><strong>Example:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ template &#34;chrome/header.html&#34; . }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ template &quot;chrome/header.html&quot; . }}
+</code></pre>
+
 <h2 id="logic">Logic</h2>
 
 <p>Go templates provide the most basic iteration and conditional logic.</p>
@@ -266,46 +239,27 @@ a map, array or slice. The following are different examples of how to use
 range.</p>
 
 <p><strong>Example 1: Using Context</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ range array }} 
+
+<pre><code>{{ range array }} 
     {{ . }}
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+{{ end }}
+</code></pre>
+
 <p><strong>Example 2: Declaring value variable name</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{range $element := array}} 
+
+<pre><code>{{range $element := array}} 
     {{ $element }} 
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+{{ end }}
+</code></pre>
+
 <p><strong>Example 2: Declaring key and value variable name</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{range $index, $element := array}}
+
+<pre><code>{{range $index, $element := array}}
     {{ $index }} 
     {{ $element }} 
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+{{ end }}
+</code></pre>
+
 <h3 id="conditionals">Conditionals</h3>
 
 <p>If, else, with, or, &amp; and provide the framework for handling conditional
@@ -320,40 +274,24 @@ logic in Go Templates. Like range, each statement is closed with <code>end</code
 </ul>
 
 <p><strong>Example 1: If</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if isset .Params &#34;title&#34; }}&lt;h4&gt;{{ index .Params &#34;title&#34; }}&lt;/h4&gt;{{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ if isset .Params &quot;title&quot; }}&lt;h4&gt;{{ index .Params &quot;title&quot; }}&lt;/h4&gt;{{ end }}
+</code></pre>
+
 <p><strong>Example 2: If -&gt; Else</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if isset .Params &#34;alt&#34; }} 
-    {{ index .Params &#34;alt&#34; }}
+
+<pre><code>{{ if isset .Params &quot;alt&quot; }} 
+    {{ index .Params &quot;alt&quot; }}
 {{else}}
-    {{ index .Params &#34;caption&#34; }}
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+    {{ index .Params &quot;caption&quot; }}
+{{ end }}
+</code></pre>
+
 <p><strong>Example 3: And &amp; Or</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if and (or (isset .Params &#34;title&#34;) (isset .Params &#34;caption&#34;)) (isset .Params &#34;attr&#34;)}}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ if and (or (isset .Params &quot;title&quot;) (isset .Params &quot;caption&quot;)) (isset .Params &quot;attr&quot;)}}
+</code></pre>
+
 <p><strong>Example 4: With</strong></p>
 
 <p>An alternative way of writing &ldquo;if&rdquo; and then referencing the same value
@@ -361,31 +299,19 @@ is to use &ldquo;with&rdquo; instead. With rebinds the context <code>.</code> wi
 and skips the block if the variable is absent.</p>
 
 <p>The first example above could be simplified as:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ with .Params.title }}&lt;h4&gt;{{ . }}&lt;/h4&gt;{{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ with .Params.title }}&lt;h4&gt;{{ . }}&lt;/h4&gt;{{ end }}
+</code></pre>
+
 <p><strong>Example 5: If -&gt; Else If</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if isset .Params &#34;alt&#34; }} 
-    {{ index .Params &#34;alt&#34; }}
-{{ else if isset .Params &#34;caption&#34; }}
-    {{ index .Params &#34;caption&#34; }}
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ if isset .Params &quot;alt&quot; }} 
+    {{ index .Params &quot;alt&quot; }}
+{{ else if isset .Params &quot;caption&quot; }}
+    {{ index .Params &quot;caption&quot; }}
+{{ end }}
+</code></pre>
+
 <h2 id="pipes">Pipes</h2>
 
 <p>One of the most powerful components of go templates is the ability to
@@ -401,63 +327,39 @@ becomes the last parameter of the next pipeline.</p>
 <p>A few simple examples should help convey how to use the pipe.</p>
 
 <p><strong>Example 1 :</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if eq 1 1 }} Same {{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ if eq 1 1 }} Same {{ end }}
+</code></pre>
+
 <p>is the same as</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ eq 1 1 | if }} Same {{ end }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ eq 1 1 | if }} Same {{ end }}
+</code></pre>
+
 <p>It does look odd to place the if at the end, but it does provide a good
 illustration of how to use the pipes.</p>
 
 <p><strong>Example 2 :</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ index .Params &#34;disqus_url&#34; | html }}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{ index .Params &quot;disqus_url&quot; | html }}
+</code></pre>
+
 <p>Access the page parameter called &ldquo;disqus_url&rdquo; and escape the HTML.</p>
 
 <p><strong>Example 3 :</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{ if or (or (isset .Params &#34;title&#34;) (isset .Params &#34;caption&#34;)) (isset .Params &#34;attr&#34;)}}
+
+<pre><code>{{ if or (or (isset .Params &quot;title&quot;) (isset .Params &quot;caption&quot;)) (isset .Params &quot;attr&quot;)}}
 Stuff Here
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+{{ end }}
+</code></pre>
+
 <p>Could be rewritten as</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{  isset .Params &#34;caption&#34; | or isset .Params &#34;title&#34; | or isset .Params &#34;attr&#34; | if }}
+
+<pre><code>{{  isset .Params &quot;caption&quot; | or isset .Params &quot;title&quot; | or isset .Params &quot;attr&quot; | if }}
 Stuff Here 
-{{ end }}</pre></td></tr></table>
-</div>
-</div>
+{{ end }}
+</code></pre>
+
 <h2 id="context-aka-the-dot">Context (aka. the dot)</h2>
 
 <p>The most easily overlooked concept to understand about go templates is that {{ . }}
@@ -469,20 +371,13 @@ access this from within the loop you will likely want to set it to a variable
 instead of depending on the context.</p>
 
 <p><strong>Example:</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  {{ $title := .Site.Title }}
+
+<pre><code>  {{ $title := .Site.Title }}
   {{ range .Params.tags }}
-    &lt;li&gt; &lt;a href=&#34;{{ $baseurl }}/tags/{{ . | urlize }}&#34;&gt;{{ . }}&lt;/a&gt; - {{ $title }} &lt;/li&gt;
-  {{ end }}</pre></td></tr></table>
-</div>
-</div>
+    &lt;li&gt; &lt;a href=&quot;{{ $baseurl }}/tags/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt; - {{ $title }} &lt;/li&gt;
+  {{ end }}
+</code></pre>
+
 <p>Notice how once we have entered the loop the value of {{ . }} has changed. We
 have defined a variable outside of the loop so we have access to it from within
 the loop.</p>
@@ -506,123 +401,73 @@ doesn&rsquo;t make a lot of sense. We&rsquo;ve defined a variable in our front m
 of some pages to turn off the TOC from being displayed.</p>
 
 <p>Here is the example front matter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">---
-title: &#34;Permalinks&#34;
-date: &#34;2013-11-18&#34;
+
+<pre><code>---
+title: &quot;Permalinks&quot;
+date: &quot;2013-11-18&quot;
 aliases:
-  - &#34;/doc/permalinks/&#34;
-groups: [&#34;extras&#34;]
+  - &quot;/doc/permalinks/&quot;
+groups: [&quot;extras&quot;]
 groups_weight: 30
 notoc: true
----</pre></td></tr></table>
-</div>
-</div>
+---
+</code></pre>
+
 <p>Here is the corresponding code inside of the template:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  {{ if not .Params.notoc }}
-    &lt;div id=&#34;toc&#34; class=&#34;well col-md-4 col-sm-6&#34;&gt;
+
+<pre><code>  {{ if not .Params.notoc }}
+    &lt;div id=&quot;toc&quot; class=&quot;well col-md-4 col-sm-6&quot;&gt;
     {{ .TableOfContents }}
     &lt;/div&gt;
-  {{ end }}</pre></td></tr></table>
-</div>
-</div>
+  {{ end }}
+</code></pre>
+
 <h2 id="using-site-config-parameters">Using Site (config) Parameters</h2>
 
 <p>In your top-level configuration file (eg, <code>config.yaml</code>) you can define site
 parameters, which are values which will be available to you in chrome.</p>
 
 <p>For instance, you might declare:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">params<span class="p">:</span><span class="w">
-</span><span class="w">  </span>CopyrightHTML<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Copyright &amp;#xA9; 2013 John Doe. All Rights Reserved.&#34;</span><span class="w">
-</span><span class="w">  </span>TwitterUser<span class="p">:</span><span class="w"> </span><span class="s2">&#34;spf13&#34;</span><span class="w">
-</span><span class="w">  </span>SidebarRecentLimit<span class="p">:</span><span class="w"> </span><span class="m">5</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-yaml">params:
+  CopyrightHTML: &quot;Copyright &amp;#xA9; 2013 John Doe. All Rights Reserved.&quot;
+  TwitterUser: &quot;spf13&quot;
+  SidebarRecentLimit: 5
+</code></pre>
+
 <p>Within a footer layout, you might then declare a <code>&lt;footer&gt;</code> which is only
 provided if the <code>CopyrightHTML</code> parameter is provided, and if it is given,
 you would declare it to be HTML-safe, so that the HTML entity is not escaped
 again.  This would let you easily update just your top-level config file each
 January 1st, instead of hunting through your templates.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{if .Site.Params.CopyrightHTML}}&lt;footer&gt;
-&lt;div class=&#34;text-center&#34;&gt;{{.Site.Params.CopyrightHTML | safeHtml}}&lt;/div&gt;
-&lt;/footer&gt;{{end}}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{if .Site.Params.CopyrightHTML}}&lt;footer&gt;
+&lt;div class=&quot;text-center&quot;&gt;{{.Site.Params.CopyrightHTML | safeHtml}}&lt;/div&gt;
+&lt;/footer&gt;{{end}}
+</code></pre>
+
 <p>An alternative way of writing the &ldquo;if&rdquo; and then referencing the same value
 is to use &ldquo;with&rdquo; instead. With rebinds the context <code>.</code> within its scope,
 and skips the block if the variable is absent:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{with .Site.Params.TwitterUser}}&lt;span class=&#34;twitter&#34;&gt;
-&lt;a href=&#34;https://twitter.com/{{.}}&#34; rel=&#34;author&#34;&gt;
-&lt;img src=&#34;/images/twitter.png&#34; width=&#34;48&#34; height=&#34;48&#34; title=&#34;Twitter: {{.}}&#34;
- alt=&#34;Twitter&#34;&gt;&lt;/a&gt;
-&lt;/span&gt;{{end}}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{with .Site.Params.TwitterUser}}&lt;span class=&quot;twitter&quot;&gt;
+&lt;a href=&quot;https://twitter.com/{{.}}&quot; rel=&quot;author&quot;&gt;
+&lt;img src=&quot;/images/twitter.png&quot; width=&quot;48&quot; height=&quot;48&quot; title=&quot;Twitter: {{.}}&quot;
+ alt=&quot;Twitter&quot;&gt;&lt;/a&gt;
+&lt;/span&gt;{{end}}
+</code></pre>
+
 <p>Finally, if you want to pull &ldquo;magic constants&rdquo; out of your layouts, you can do
 so, such as in this example:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">&lt;nav class=&#34;recent&#34;&gt;
+
+<pre><code>&lt;nav class=&quot;recent&quot;&gt;
   &lt;h1&gt;Recent Posts&lt;/h1&gt;
   &lt;ul&gt;{{range first .Site.Params.SidebarRecentLimit .Site.Recent}}
-    &lt;li&gt;&lt;a href=&#34;{{.RelPermalink}}&#34;&gt;{{.Title}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;{{.RelPermalink}}&quot;&gt;{{.Title}}&lt;/a&gt;&lt;/li&gt;
   {{end}}&lt;/ul&gt;
-&lt;/nav&gt;</pre></td></tr></table>
-</div>
-</div>
+&lt;/nav&gt;
+</code></pre>
+
 <p><a href="http://golang.org/">go</a>
 <a href="http://golang.org/pkg/html/template/">gohtmltemplate</a></p>
 
@@ -638,11 +483,9 @@ so, such as in this example:</p>
 
     <ul class="pager article-pager">
       <li class="pager-newer">
-          <a href="/blogs_blog/2015-07-23-r-rmarkdown/" data-toggle="tooltip" data-placement="top" title="Hello R Markdown">&lt; Newer</a>
+          <a href="/blogs_blog/test-new-post-via-add-in-menu/" data-toggle="tooltip" data-placement="top" title="Test new post via add-in menu">&lt; Newer</a>
       </li>
-      <li class="pager-older">
-        <a href="/blogs_blog/hugoisforlovers/" data-toggle="tooltip" data-placement="top" title="Getting Started with Hugo">Older &gt;</a>
-      </li>
+      <li class="pager-older pager-noitem">Older &gt;</li>
     </ul>
   </div>
 

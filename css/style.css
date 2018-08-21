@@ -20,15 +20,6 @@ hr {
   border-top: solid 1px lightgray;
   margin: 0;
 }
-pre, code {
-  font-family: monospace, serif;
-  background-color: lightgray;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-pre {
-  padding: 4px;
-}
 blockquote {
   margin: 0;
   margin-left: 40px;
@@ -117,17 +108,21 @@ blockquote blockquote blockquote blockquote {
   font-size: 1.6em;
 }
 
-/* Code highlight */
-.highlight pre, .highlight code {
-  background-color: inherit;
-  padding: 0;
-}
-
 /* Main contents */
 .main {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* GJL: I stole this by inspecting the inline code elements at 
+https://amber.rbind.io/blog/2017/11/15/syntax-highlighting/ */
+code {
+    padding: 2px 4px;
+    font-size: 120%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
 }
 
 /* article */
