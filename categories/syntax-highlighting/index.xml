@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogging on Gary Larson</title>
-    <link>/categories/blogging/</link>
-    <description>Recent content in Blogging on Gary Larson</description>
+    <title>Syntax Highlighting on Gary Larson</title>
+    <link>/categories/syntax-highlighting/</link>
+    <description>Recent content in Syntax Highlighting on Gary Larson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
     <lastBuildDate>Wed, 22 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/blogging/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/syntax-highlighting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <guid>/blogs_blog/syntax-highlighting-for-a-hugo-data-science-blog/</guid>
       <description>This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&amp;rsquo;d probably use Amber&amp;rsquo;s more thorough post as a guide. It stands alone better than my post here.
 Background Hugo comes with a built-in, default syntax highlighting system called Chroma.</description>
-    </item>
-    
-    <item>
-      <title>Blogging with runnable Python in Rmarkdown files</title>
-      <link>/blogs_blog/blogging-with-runnable-python-in-rmarkdown-files/</link>
-      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs_blog/blogging-with-runnable-python-in-rmarkdown-files/</guid>
-      <description>I wondered if I could blog with runnable Python code chunks if I&amp;rsquo;m creating my Hugo content with .Rmarkdown files. It looks like I can with the reticulate package; see the vignette here.
-install.packages(&#39;reticulate&#39;, repos=&amp;quot;https://cloud.r-project.org&amp;quot;) library(reticulate)  I believe this allows you to actually run Python. Alternatively, if you just want to display Python code, just use a code fence, i.e. the Github-style code block that&amp;rsquo;s 3 backticks, new line, code, then three closing backticks on a new line, like so:</description>
     </item>
     
   </channel>
