@@ -7,62 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
-    <lastBuildDate>Wed, 22 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Blogging</title>
-      <link>/categories/blogging/</link>
-      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Development</title>
+      <link>/categories/development/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/categories/blogging/</guid>
+      <guid>/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Category1</title>
-      <link>/categories/category1/</link>
-      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      <title>Golang</title>
+      <link>/categories/golang/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/categories/category1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>/categories/python/</link>
-      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Markdown</title>
-      <link>/categories/r-markdown/</link>
-      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>/categories/syntax-highlighting/</link>
-      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/syntax-highlighting/</guid>
+      <guid>/categories/golang/</guid>
       <description></description>
     </item>
     

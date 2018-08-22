@@ -14,10 +14,10 @@
     
     <item>
       <title>Test new post via add-in menu</title>
-      <link>/blogs_blog/test-new-post-via-add-in-menu/</link>
+      <link>/post/test-new-post-via-add-in-menu/</link>
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blogs_blog/test-new-post-via-add-in-menu/</guid>
+      <guid>/post/test-new-post-via-add-in-menu/</guid>
       <description>To write a new post (like this one) using blogdown in RStudio, just click &amp;ldquo;Addins&amp;rdquo; -&amp;gt; &amp;ldquo;New Post&amp;rdquo; near the top of the RStudio window.
 Here&amp;rsquo;s some junk R code. In the chunk options, just set eval=FALSE.
 plot(x)  I should get used to writing (R) markdown pretty quickly, after translating a few of my plot posts.

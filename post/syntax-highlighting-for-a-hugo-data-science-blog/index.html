@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Syntax highlighting for a Hugo data science blog - Gary Larson</title>
+  <meta property="og:title" content="Syntax highlighting for a Hugo data science blog - Gary Larson" />
+  <meta name="twitter:title" content="Syntax highlighting for a Hugo data science blog - Gary Larson" />
+  <meta name="description" content="This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&rsquo;d probably use Amber&rsquo;s more thorough post as a guide. It stands alone better than my post here.
+Background Hugo comes with a built-in, default syntax highlighting system called Chroma.">
+  <meta property="og:description" content="This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&rsquo;d probably use Amber&rsquo;s more thorough post as a guide. It stands alone better than my post here.
+Background Hugo comes with a built-in, default syntax highlighting system called Chroma.">
+  <meta name="twitter:description" content="This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Gary Larson" />
+  <meta property="og:url" content="/post/syntax-highlighting-for-a-hugo-data-science-blog/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.45.1" />
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Gary Larson</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-research"><a href="/research/" title="Research">Research</a></li>
+      <li class="site-navi-item-post"><a href="/post/" title="Posts">Posts</a></li>
+      <li class="site-navi-item-teaching"><a href="/teaching/" title="Teaching">Teaching</a></li>
+    </ul>
+  </nav>
+  
+  <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+</header>
+<hr class="site-header-bottom">
+
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Syntax highlighting for a Hugo data science blog</h1>
+      
+      
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>August 22, 2018</time></li>
+        <li class="article-meta-tags">
+          <a href="/tags/blogging/">
+            <i class="fas fa-tag"></i>
+            blogging
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/syntax-highlighting/">
+            <i class="fas fa-tag"></i>
+            syntax highlighting
+          </a>&nbsp;
+        </li>
+      </ul>
+      
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#the-problem">The problem</a></li>
+<li><a href="#what-i-did-to-solve-the-problem">What I did to solve the problem</a>
+<ul>
+<li><a href="#inline-code-formatting-still-wasn-t-working">Inline code formatting still wasn&rsquo;t working</a></li>
+</ul></li>
+<li><a href="#regarding-hugo-s-lookup-order">Regarding Hugo&rsquo;s lookup order</a></li>
+<li><a href="#final-thoughts">Final thoughts</a></li>
+</ul>
+</nav>
+</aside>
+      
+
+<p>This post explains how I set up my <a href="https://gohugo.io">Hugo</a> blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on <a href="https://amber.rbind.io/blog/2017/11/15/syntax-highlighting/">this post</a> from Amber Thomas. Thanks a lot Amber! If I were you, I&rsquo;d probably use Amber&rsquo;s more thorough post as a guide. It stands alone better than my post here.</p>
+
+<h1 id="background">Background</h1>
+
+<p>Hugo comes with a built-in, default syntax highlighting system called Chroma. There is an older, non-default option called Pygments which can still be used. To help with compatibility, Chroma retains lots of Pygments&rsquo; configuration options, e.g. you can have lines like <code>pygmentsUseClasses = true</code> in your blog&rsquo;s <code>config.toml</code> file, even if you&rsquo;re using the default Chroma instead of Pygments.  See <a href="https://gohugo.io/content-management/syntax-highlighting/">Hugo&rsquo;s page on syntax highlighting</a> for more info.</p>
+
+<p>The default Chroma setup didn&rsquo;t look good. For one, inline code blocks (as well as larger code chunks) showed as black font on a grey background, but I wanted something more like Github inline code <code>like this</code>.</p>
+
+<p>One can also use a javascript library called <code>highlight.js</code>, which is ultimately what I went with. This library is described <a href="https://bookdown.org/yihui/blogdown/themes.html#the-default-theme">here</a> in Yihui Xie&rsquo;s <code>blogdown</code> book.</p>
+
+<p>The exact procedure to modify default syntax highlighting to suit your needs will depend on the theme you&rsquo;re using. This post relates to Whiteplain.</p>
+
+<h1 id="the-problem">The problem</h1>
+
+<p>I wanted inline code chunks <code>like this</code> to look as they do here. By default they were in black text on a gray background. Other code chunks had the same problem, but now they look much better, like this <code>R</code> chunk:</p>
+
+<pre><code class="language-r">myFunction &lt;- function(f,g,h){
+    print('Hi Mom')
+    return (f*g*h^2)
+}
+</code></pre>
+
+<h1 id="what-i-did-to-solve-the-problem">What I did to solve the problem</h1>
+
+<p>My problem is basically the same as Amber&rsquo;s, and I solved it with only minor differences to her solution.</p>
+
+<p>So I went with <code>highlight.js</code>, not Chroma. I followed Amber&rsquo;s <strong>Step One</strong> section exactly. Here&rsquo;s the relevant code in my <code>config.toml</code>:</p>
+
+<pre><code>[params]
+  ### SYNTAX HIGHLIGHTING using highlight.js
+      description = &quot;A website built through Hugo and blogdown.&quot;
+
+      highlightjsVersion = &quot;9.11.0&quot;
+      highlightjsCDN = &quot;//cdn.bootcss.com&quot;
+      highlightjsLang = [&quot;r&quot;, &quot;yaml&quot;, &quot;tex&quot;]
+      highlightjsTheme = &quot;github&quot;
+
+      MathJaxCDN = &quot;//cdn.bootcss.com&quot;
+      MathJaxVersion = &quot;2.7.1&quot;
+</code></pre>
+
+<p>I followed her <strong>Step Two</strong> exactly as well, except where she states that</p>
+
+<blockquote>
+<p>In the partials folder for your theme (themes/<em>name-of-your-theme</em>/layouts/partials), you should see a file called <code>head.html</code> or <code>header.html</code>. Add the following code&hellip;</p>
+</blockquote>
+
+<p>I actually had both files, so I added the specified code to both files, and that seemed to be fine. Now I&rsquo;m up to her <strong>Step Three</strong>, and I ignored some of her steps there. At this point my syntax highlighting for code chunks was good, but the font size was a little small and inline code <code>like this</code> still was black on a grey background. To remedy this, I right clicked on my page and clicked &ldquo;Inspect&rdquo; (using Google Chrome here) to open Developer Tools. Then I clicked the little mouse-cursor-in-a-box icon towards the left of the screen, and then found a black-on-gray inline code bit on the page and clicked on that. I followed Amber&rsquo;s advice about removing <code>pre</code> and <code>code</code>:</p>
+
+<blockquote>
+<p>Search that doc for any instances of pre or code and find the chunk that has the background-color and text color that your theme is currently generating displaying.</p>
+</blockquote>
+
+<h2 id="inline-code-formatting-still-wasn-t-working">Inline code formatting still wasn&rsquo;t working</h2>
+
+<p>I can&rsquo;t fully remember, but at this point I believe the syntax highlighting for inline still didn&rsquo;t work. I wanted mine to look like Amber&rsquo;s - so how was Amber&rsquo;s formatted? To find out, I simply used the Inspector on Amber&rsquo;s own page, Inspecting an inline code chunk of hers. Here the Inspector is showing how the word <code>bootstrap</code> gets its syntax highlighting:</p>
+
+<p><img src="/images/2018-08-22.png" alt="" /></p>
+
+<p>I copied the block in the lower right pane which begins with <code>code {</code> and pasted that into <code>themes/whiteplain/static/css/style.css</code>, which is apparently the <code>.css</code> file that controls inline-code syntax highlighting in the Whiteplain theme. Finally I modified <code>font-size: 90%</code> to 120% to get the code to pop a little more.</p>
+
+<h1 id="regarding-hugo-s-lookup-order">Regarding Hugo&rsquo;s lookup order</h1>
+
+<p>When Hugo builds your site, it looks for necessary files by searching directories in a certain order. Just above, I said I pasted code needed for inline formatting into <code>themes/whiteplain/static/css/style.css</code>. My understanding is that you ought to be able to copy the theme&rsquo;s original <code>style.css</code> file into <code>static/css/</code> and then modify <em>that</em> copy by pasting the formatting info in. In other words, my understanding is it&rsquo;s possible to leave the <code>themes/</code> directory itself alone, and <em>effectively</em> modify the theme via other files which override the default theme elements. Practically speaking this doesn&rsquo;t matter a ton. But the advantage (if I <em>had</em> done that, and if it had worked) would be that if I wanted to know if any parts of the theme are modified, I could just look in the relevant non-<code>themes/</code> directories of my site&rsquo;s folder, to see where I&rsquo;d placed overriding files. Oh well, for now, I&rsquo;ve just modified the theme&rsquo;s files in place, and it got me what I wanted, so I&rsquo;m done.</p>
+
+<h1 id="final-thoughts">Final thoughts</h1>
+
+<p>It&rsquo;s not described above, but initially I was using Chroma and getting things <em>almost</em> right. I had two main problems. First, code chunks had zero indentation, so when they were on a colored background, the actual code was pushed all the way to the left of that colored background. This looked weird. I probably could have solved this using the Developer Tools, but I hadn&rsquo;t yet found Amber&rsquo;s blog so Chrome&rsquo;s Developer Tools wasn&rsquo;t on my mind yet. The second problem kind of fixed the first: I added line numbers. This made for nice indentation in multi-line chunks, but for single-line chunks, I got a line number of <code>1</code> at left, which looked like clutter to me, <em>and</em> no space appeared between the <code>1</code> and the code. Inline formatting was also that ugly black on gray, but I now believe that was sort of independent of the choice of Chroma over <code>highlight.js</code> &ndash; I probably could have solved the inline problem the same way I did above.</p>
+
+<p>Anyway, switching to <code>highlight.js</code> from the default Chroma syntax highlighter solved my code chunk problems, and Chrome&rsquo;s Developer Tools helped me quickly fix the inline code formatting. Thanks a lot Amber Thomas!</p>
+
+    </article>
+
+    
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+    <div class="disqus-comments">
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "garylarson.github.io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older">
+        <a href="/post/blogging-with-runnable-python-in-rmarkdown-files/" data-toggle="tooltip" data-placement="top" title="Blogging with runnable Python in Rmarkdown files">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright">&copy; Copyright 2018 Gary Larson</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-about"><a href="/about/" title="About">About</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="/js/custom.js"></script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-48460257-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>
