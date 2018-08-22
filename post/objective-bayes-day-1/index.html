@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Blogging with runnable Python in Rmarkdown files - Gary Larson</title>
-  <meta property="og:title" content="Blogging with runnable Python in Rmarkdown files - Gary Larson" />
-  <meta name="twitter:title" content="Blogging with runnable Python in Rmarkdown files - Gary Larson" />
-  <meta name="description" content="I wondered if I could blog with runnable Python code chunks if I&rsquo;m creating my Hugo content with .Rmarkdown files. It looks like I can with the reticulate package; see the vignette here.
-install.packages(&#39;reticulate&#39;, repos=&quot;https://cloud.r-project.org&quot;) library(reticulate)  I believe this allows you to actually run Python. Alternatively, if you just want to display Python code, just use a code fence, i.e. the Github-style code block that&rsquo;s 3 backticks, new line, code, then three closing backticks on a new line, like so:">
-  <meta property="og:description" content="I wondered if I could blog with runnable Python code chunks if I&rsquo;m creating my Hugo content with .Rmarkdown files. It looks like I can with the reticulate package; see the vignette here.
-install.packages(&#39;reticulate&#39;, repos=&quot;https://cloud.r-project.org&quot;) library(reticulate)  I believe this allows you to actually run Python. Alternatively, if you just want to display Python code, just use a code fence, i.e. the Github-style code block that&rsquo;s 3 backticks, new line, code, then three closing backticks on a new line, like so:">
-  <meta name="twitter:description" content="I wondered if I could blog with runnable Python code chunks if I&rsquo;m creating my Hugo content with .Rmarkdown files. It looks like I can with the reticulate package; see the vignette here. …">
+  <title>Objective Bayes - Day 1 - Gary Larson</title>
+  <meta property="og:title" content="Objective Bayes - Day 1 - Gary Larson" />
+  <meta name="twitter:title" content="Objective Bayes - Day 1 - Gary Larson" />
+  <meta name="description" content="I&rsquo;m taking a course by Jim Berger on Objective Bayesian Analysis. It begins with the motivation and history behind 250 years of objective Bayesian analysis, and today he shared an interesting tidbit.
+It won&rsquo;t be published publicly on my blog (yet) because Jim mentioned it could be an interesting reveal at Duke Statistical Science&rsquo;s upcoming conference celebrating the 250 year anniversary of the publishing of Bayes&rsquo; Theorem.
+Statistician / statistics historian Stephen Stigler was wondering why Bayes was interested in the problem which led to the 1763 paper.">
+  <meta property="og:description" content="I&rsquo;m taking a course by Jim Berger on Objective Bayesian Analysis. It begins with the motivation and history behind 250 years of objective Bayesian analysis, and today he shared an interesting tidbit.
+It won&rsquo;t be published publicly on my blog (yet) because Jim mentioned it could be an interesting reveal at Duke Statistical Science&rsquo;s upcoming conference celebrating the 250 year anniversary of the publishing of Bayes&rsquo; Theorem.
+Statistician / statistics historian Stephen Stigler was wondering why Bayes was interested in the problem which led to the 1763 paper.">
+  <meta name="twitter:description" content="I&rsquo;m taking a course by Jim Berger on Objective Bayesian Analysis. It begins with the motivation and history behind 250 years of objective Bayesian analysis, and today he shared an interesting …">
   <meta name="author" content=""/>
   <meta property="og:site_name" content="Gary Larson" />
-  <meta property="og:url" content="/post/blogging-with-runnable-python-in-rmarkdown-files/" />
+  <meta property="og:url" content="/post/objective-bayes-day-1/" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary" />
   <meta name="generator" content="Hugo 0.45.1" />
@@ -48,7 +50,7 @@ install.packages(&#39;reticulate&#39;, repos=&quot;https://cloud.r-project.org&q
     <article class="article">
       
       
-      <h1 class="article-title">Blogging with runnable Python in Rmarkdown files</h1>
+      <h1 class="article-title">Objective Bayes - Day 1</h1>
       
       
 <ul class="article-share">
@@ -59,57 +61,22 @@ install.packages(&#39;reticulate&#39;, repos=&quot;https://cloud.r-project.org&q
 
       <hr class="article-title-bottom">
       <ul class="article-meta">
-        <li class="article-meta-date"><time>August 21, 2018</time></li>
+        <li class="article-meta-date"><time>August 27, 2013</time></li>
         <li class="article-meta-tags">
-          <a href="/tags/python/">
+          <a href="/tags/history/">
             <i class="fas fa-tag"></i>
-            python
-          </a>&nbsp;
-        </li>
-        <li class="article-meta-tags">
-          <a href="/tags/r/">
-            <i class="fas fa-tag"></i>
-            R
-          </a>&nbsp;
-        </li>
-        <li class="article-meta-tags">
-          <a href="/tags/blogging/">
-            <i class="fas fa-tag"></i>
-            blogging
-          </a>&nbsp;
-        </li>
-        <li class="article-meta-tags">
-          <a href="/tags/r-markdown/">
-            <i class="fas fa-tag"></i>
-            R markdown
+            history
           </a>&nbsp;
         </li>
       </ul>
       
-      <p>I wondered if I could blog with runnable Python code chunks if I&rsquo;m creating my Hugo content with <code>.Rmarkdown</code> files. It looks like I can with the <code>reticulate</code> package; <a href="https://cran.r-project.org/web/packages/reticulate/vignettes/r_markdown.html">see the vignette here.</a></p>
+      <p>I&rsquo;m taking a course by Jim Berger on Objective Bayesian Analysis. It begins with the motivation and history behind 250 years of objective Bayesian analysis, and today he shared an interesting tidbit.</p>
 
-<pre><code class="language-r">install.packages('reticulate', repos=&quot;https://cloud.r-project.org&quot;)
-library(reticulate)
-</code></pre>
+<p>It won&rsquo;t be published publicly on my blog (yet) because Jim mentioned it could be an interesting reveal at Duke Statistical Science&rsquo;s upcoming conference celebrating the 250 year anniversary of the publishing of Bayes&rsquo; Theorem.</p>
 
-<p>I believe this allows you to actually run Python. Alternatively, if you just want to <em>display</em> Python code, just use a code fence, i.e. the Github-style code block that&rsquo;s 3 backticks, new line, code, then three closing backticks on a new line, like so:</p>
+<p>Statistician / statistics historian Stephen Stigler was wondering why Bayes was interested in the problem which led to the 1763 paper. Stigler believes that Bayes was building a case against an argument recently made by Hume, who apparently gave a probability-based argument of why God does not exist.</p>
 
-<pre><code class="language-python">x = [1, 2, 3, 4, 5]
-print(x[0:4])
-</code></pre>
-
-<p>According to the <code>reticulate</code> vignette, you start by loading the package and specifying the python directory.</p>
-
-<pre><code class="language-r">library(reticulate)
-use_python(&quot;/usr/bin/python&quot;)
-</code></pre>
-
-<p>Ultimately though I could not get the following simple Python code to execute:</p>
-
-<pre><code class="language-python">import pandas
-</code></pre>
-
-<p>This may be an issue of me not having <code>pandas</code> installed properly. Answering that question will have to wait until a later date.</p>
+<p>It&rsquo;s a pretty amazing thought that all of Bayesian statistics - and really most/all of statistics itself, since we&rsquo;re pre-1900&rsquo;s here - may have been launched by a mathematical debate about the existence of God!</p>
 
     </article>
 
@@ -144,10 +111,10 @@ use_python(&quot;/usr/bin/python&quot;)
 
     <ul class="pager article-pager">
       <li class="pager-newer">
-          <a href="/post/syntax-highlighting-for-a-hugo-data-science-blog/" data-toggle="tooltip" data-placement="top" title="Syntax highlighting for a Hugo data science blog">&lt; Newer</a>
+          <a href="/post/david-draper-s-personal-statement/" data-toggle="tooltip" data-placement="top" title="David Draper’s personal statement">&lt; Newer</a>
       </li>
       <li class="pager-older">
-        <a href="/post/takeover-of-the-allen-building/" data-toggle="tooltip" data-placement="top" title="Takeover of the Allen Building">Older &gt;</a>
+        <a href="/post/test-new-post-via-add-in-menu/" data-toggle="tooltip" data-placement="top" title="Test new post via add-in menu">Older &gt;</a>
       </li>
     </ul>
   </div>
