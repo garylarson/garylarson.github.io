@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Python: single underscores vs. double underscores - Gary Larson</title>
+  <meta property="og:title" content="Python: single underscores vs. double underscores - Gary Larson" />
+  <meta name="twitter:title" content="Python: single underscores vs. double underscores - Gary Larson" />
+  <meta name="description" content="This Youtube video is a really great 6 minute demonstration of the distinction between _ and __. I&rsquo;ll embed the linked video at the end of this post. One of the top comments on that video says
+ For C&#43;&#43; people, foo is public, _bar is protected, and __baz is private.
+ Here&rsquo;s a simple class, with an initializer implemented, including the three variables foo, _bar, and __baz.
+class Test: def __init__(self): self.">
+  <meta property="og:description" content="This Youtube video is a really great 6 minute demonstration of the distinction between _ and __. I&rsquo;ll embed the linked video at the end of this post. One of the top comments on that video says
+ For C&#43;&#43; people, foo is public, _bar is protected, and __baz is private.
+ Here&rsquo;s a simple class, with an initializer implemented, including the three variables foo, _bar, and __baz.
+class Test: def __init__(self): self.">
+  <meta name="twitter:description" content="This Youtube video is a really great 6 minute demonstration of the distinction between _ and __. I&rsquo;ll embed the linked video at the end of this post. One of the top comments on that video says …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Gary Larson" />
+  <meta property="og:url" content="/post/single-underscore-vs-double-underscore/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.45.1" />
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Gary Larson</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-research"><a href="/research/" title="Research">Research</a></li>
+      <li class="site-navi-item-post"><a href="/post/" title="Posts">Posts</a></li>
+      <li class="site-navi-item-teaching"><a href="/teaching/" title="Teaching">Teaching</a></li>
+    </ul>
+  </nav>
+  
+  <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+</header>
+<hr class="site-header-bottom">
+
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Python: single underscores vs. double underscores</h1>
+      
+      
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>August 23, 2018</time></li>
+        <li class="article-meta-tags">
+          <a href="/tags/python/">
+            <i class="fas fa-tag"></i>
+            python
+          </a>&nbsp;
+        </li>
+      </ul>
+      
+      
+
+<p><a href="https://www.youtube.com/watch?v=ALZmCy2u0jQ">This Youtube video</a> is a really great 6 minute demonstration of the distinction between <code>_</code> and <code>__</code>. I&rsquo;ll embed the linked video at the end of this post. One of the top comments on that video says</p>
+
+<blockquote>
+<p>For C++ people, <code>foo</code> is public, <code>_bar</code> is protected, and <code>__baz</code> is private.</p>
+</blockquote>
+
+<p>Here&rsquo;s a simple class, with an initializer implemented, including the three variables <code>foo</code>, <code>_bar</code>, and <code>__baz</code>.</p>
+
+<pre><code class="language-python">class Test:
+    def __init__(self):
+        self.foo = 11
+        self._bar = 23
+        self.__baz = 42
+
+t = Test()
+</code></pre>
+
+<h2 id="the-single-underscore">The single underscore</h2>
+
+<p>The single underscore takes its meaning by convention. That is, it&rsquo;s not something that&rsquo;s enforced by the interpreter. The single underscore &ldquo;suggests&rdquo; that the variable is private to the class, forcing a user to actually type an underscore e.g. <code>._bar</code> to access it.</p>
+
+<h2 id="the-double-underscore">The double underscore</h2>
+
+<p>The Python interpreter does some &ldquo;name mangling&rdquo; when you define something with a double underscore. It&rsquo;s explained in the Youtube video above, and it&rsquo;s done <strong>to prevent name collisions when somebody extends the class</strong>. The name mangling means that trying to access <code>__baz</code> the usual way (<code>t.__baz</code>) won&rsquo;t work.</p>
+
+<p>So the single underscore variable can be directly accessed, because no name mangling takes place:</p>
+
+<pre><code class="language-python">t._bar
+</code></pre>
+
+<pre><code>23
+</code></pre>
+
+<p>But the &ldquo;dunder&rdquo; (<strong>d</strong>ouble <strong>under</strong>score) variable can&rsquo;t be accessed directly:</p>
+
+<pre><code class="language-python">t.__baz
+</code></pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+AttributeError                            Traceback (most recent call last)
+
+&lt;ipython-input-16-ead6810a10a9&gt; in &lt;module&gt;()
+----&gt; 1 t.__baz
+
+
+AttributeError: 'Test' object has no attribute '__baz'
+</code></pre>
+
+<p>What&rsquo;s going on? Let&rsquo;s look at the instance&rsquo;s &ldquo;attributes&rdquo; (not sure if that&rsquo;s what they&rsquo;re called).</p>
+
+<pre><code class="language-python">dir(t)
+</code></pre>
+
+<pre><code>['_Test__baz',
+ '__class__',
+ '__delattr__',
+ '__dict__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__module__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '__weakref__',
+ '_bar',
+ 'foo']
+</code></pre>
+
+<p>You can see that <code>_bar</code> is directly accessible (and of course, <code>foo</code> is too), but <code>__baz</code> has been name-mangled to <code>_Test__baz</code>. So if somebody extended the class, the extended class&rsquo;s field would be something like <code>_ExtendedTest__baz</code>.</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/ALZmCy2u0jQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+    </article>
+
+    
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+    <div class="disqus-comments">
+      
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'garylarson-github-io';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <ul class="pager article-pager">
+      <li class="pager-newer">
+          <a href="/post/regression-in-python/" data-toggle="tooltip" data-placement="top" title="Regression in Python">&lt; Newer</a>
+      </li>
+      <li class="pager-older">
+        <a href="/post/syntax-highlighting-for-a-hugo-data-science-blog/" data-toggle="tooltip" data-placement="top" title="Syntax highlighting for a Hugo data science blog">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright">&copy; Copyright 2018 Gary Larson</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-about"><a href="/about/" title="About">About</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="/js/custom.js"></script>
+
+
+</body>
+</html>

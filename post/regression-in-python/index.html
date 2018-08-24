@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Regression in Python - Gary Larson</title>
+  <meta property="og:title" content="Regression in Python - Gary Larson" />
+  <meta name="twitter:title" content="Regression in Python - Gary Larson" />
+  <meta name="description" content="Linear and Polynomial Regression Here&rsquo;s some cool initial code from page 284 (under &ldquo;Derived Features&rdquo; in the section on Feature Engineering) in the Python Data Science Handbook (PDSH). This code will allow me to quickly fit a linear and polynomial regression to very simple data. My comments are marked something like ### GJL::
+% matplotlib inline import numpy as np import matplotlib.pyplot as plt x = np.array([1,2,3,4,5]) y = np.">
+  <meta property="og:description" content="Linear and Polynomial Regression Here&rsquo;s some cool initial code from page 284 (under &ldquo;Derived Features&rdquo; in the section on Feature Engineering) in the Python Data Science Handbook (PDSH). This code will allow me to quickly fit a linear and polynomial regression to very simple data. My comments are marked something like ### GJL::
+% matplotlib inline import numpy as np import matplotlib.pyplot as plt x = np.array([1,2,3,4,5]) y = np.">
+  <meta name="twitter:description" content="Linear and Polynomial Regression Here&rsquo;s some cool initial code from page 284 (under &ldquo;Derived Features&rdquo; in the section on Feature Engineering) in the Python Data Science Handbook …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Gary Larson" />
+  <meta property="og:url" content="/post/regression-in-python/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.45.1" />
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Gary Larson</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-research"><a href="/research/" title="Research">Research</a></li>
+      <li class="site-navi-item-post"><a href="/post/" title="Posts">Posts</a></li>
+      <li class="site-navi-item-teaching"><a href="/teaching/" title="Teaching">Teaching</a></li>
+    </ul>
+  </nav>
+  
+  <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+</header>
+<hr class="site-header-bottom">
+
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">Regression in Python</h1>
+      
+      
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>August 24, 2018</time></li>
+        <li class="article-meta-tags">
+          <a href="/tags/python/">
+            <i class="fas fa-tag"></i>
+            python
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/pdsh/">
+            <i class="fas fa-tag"></i>
+            PDSH
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/regression/">
+            <i class="fas fa-tag"></i>
+            regression
+          </a>&nbsp;
+        </li>
+      </ul>
+      
+      
+
+<h1 id="linear-and-polynomial-regression">Linear and Polynomial Regression</h1>
+
+<p>Here&rsquo;s some cool initial code from page 284 (under &ldquo;Derived Features&rdquo; in the section on Feature Engineering) in the Python Data Science Handbook (PDSH). This code will allow me to quickly fit a linear and polynomial regression to very simple data. My comments are marked something like <code>### GJL:</code>:</p>
+
+<pre><code class="language-python">% matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([1,2,3,4,5])
+y = np.array([4,2,1,3,7])
+plt.scatter(x,y)  ### GJL: uses the function scatter() from matplotlib.pyplot. In R this call would look like plt::scatter(X,y)
+</code></pre>
+
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x1a1374a320&gt;
+</code></pre>
+
+<p><img src="/images/python-regression_2_1.png" alt="png" /></p>
+
+<p>Now they do linear regression using the package (is it called a package in Python?) <code>LinearRegression</code>. These will be good lines to dissect for learning Python. <strong>I have to be absolutely fluent in stuff like this.</strong></p>
+
+<pre><code class="language-python">from sklearn.linear_model import LinearRegression
+X = x[:, np.newaxis] ### GJL: dissect this line.
+model = LinearRegression().fit(X,y)    
+yfit = model.predict(X)
+plt.scatter(x,y)
+plt.plot(x, yfit);
+</code></pre>
+
+<p><img src="/images/python-regression_4_0.png" alt="png" /></p>
+
+<p>Now they do polynomial regression:</p>
+
+<pre><code class="language-python">from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree=3, include_bias=False)  ### GJL: My guess is &quot;include bias&quot; means &quot;include intercept&quot;
+X2 = poly.fit_transform(X)
+print(X2)
+</code></pre>
+
+<pre><code>[[  1.   1.   1.]
+ [  2.   4.   8.]
+ [  3.   9.  27.]
+ [  4.  16.  64.]
+ [  5.  25. 125.]]
+</code></pre>
+
+<p>Now we do linear regression on this modified input.</p>
+
+<pre><code class="language-python">### GJL: notice I'm overwriting the `model` variable. In this notebook, chronological type presentation, the variable names should serve mostly as educational tools in the reader's mind -- so no need to have e.g. model1, model2, model3, etc.
+model = LinearRegression().fit(X2,y)  
+yfit = model.predict(X2)
+plt.scatter(x, y)
+plt.plot(x, yfit)
+</code></pre>
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x1a137bdf60&gt;]
+</code></pre>
+
+<p><img src="/images/python-regression_8_1.png" alt="png" /></p>
+
+<h2 id="final-thought">Final thought</h2>
+
+<p>The book closes this linear and polynomial regression example with a nice final thought:</p>
+
+<blockquote>
+<p>&ldquo;This idea of improving a model not by changing the model, but by transforming the inputs, is fundamental to many of the more powerful machine learning methods. We explore this idea further in &ldquo;In Depth: Linear Regression&rdquo; in the context of <em>basis function regression</em>. More generally, this is one motivational path to the powerful set of techniques known as <em>kernel methods</em>, which we will explore in &ldquo;In-Depth: Support Vector Machines&rdquo;.</p>
+</blockquote>
+
+    </article>
+
+    
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+    <div class="disqus-comments">
+      
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'garylarson-github-io';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older">
+        <a href="/post/single-underscore-vs-double-underscore/" data-toggle="tooltip" data-placement="top" title="Python: single underscores vs. double underscores">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright">&copy; Copyright 2018 Gary Larson</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-about"><a href="/about/" title="About">About</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="/js/custom.js"></script>
+
+
+</body>
+</html>

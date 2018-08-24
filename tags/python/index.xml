@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
-    <lastBuildDate>Tue, 21 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regression in Python</title>
+      <link>/post/regression-in-python/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/regression-in-python/</guid>
+      <description>Linear and Polynomial Regression Here&amp;rsquo;s some cool initial code from page 284 (under &amp;ldquo;Derived Features&amp;rdquo; in the section on Feature Engineering) in the Python Data Science Handbook (PDSH). This code will allow me to quickly fit a linear and polynomial regression to very simple data. My comments are marked something like ### GJL::
+% matplotlib inline import numpy as np import matplotlib.pyplot as plt x = np.array([1,2,3,4,5]) y = np.</description>
+    </item>
+    
+    <item>
+      <title>Python: single underscores vs. double underscores</title>
+      <link>/post/single-underscore-vs-double-underscore/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/single-underscore-vs-double-underscore/</guid>
+      <description>This Youtube video is a really great 6 minute demonstration of the distinction between _ and __. I&amp;rsquo;ll embed the linked video at the end of this post. One of the top comments on that video says
+ For C++ people, foo is public, _bar is protected, and __baz is private.
+ Here&amp;rsquo;s a simple class, with an initializer implemented, including the three variables foo, _bar, and __baz.
+class Test: def __init__(self): self.</description>
+    </item>
     
     <item>
       <title>Blogging with runnable Python in Rmarkdown files</title>

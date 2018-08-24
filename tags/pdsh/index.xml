@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pdsh on Gary Larson</title>
+    <link>/tags/pdsh/</link>
+    <description>Recent content in Pdsh on Gary Larson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
+    <lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/pdsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Regression in Python</title>
+      <link>/post/regression-in-python/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/regression-in-python/</guid>
+      <description>Linear and Polynomial Regression Here&amp;rsquo;s some cool initial code from page 284 (under &amp;ldquo;Derived Features&amp;rdquo; in the section on Feature Engineering) in the Python Data Science Handbook (PDSH). This code will allow me to quickly fit a linear and polynomial regression to very simple data. My comments are marked something like ### GJL::
+% matplotlib inline import numpy as np import matplotlib.pyplot as plt x = np.array([1,2,3,4,5]) y = np.</description>
+    </item>
+    
+  </channel>
+</rss>
