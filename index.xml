@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Produce a Python blog post with figures</title>
+      <link>/post/produce-a-python-blog-post-with-figures/</link>
+      <pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/produce-a-python-blog-post-with-figures/</guid>
+      <description>Export from ipython notebook as a markdown file. The result will be a .zip file containing the .md file and images for the figures. By default these images&amp;rsquo; filenames have output as the prefix. If I can figure out how to set a custom prefix, those following steps which involve file renaming will be moot. Move the .md file to garylarson.github.io-builder/content/post/ or other relevant subfolder of .../content/. For most posts this will be the post folder.</description>
+    </item>
+    
+    <item>
       <title>Notes on Python Data Science Handbook</title>
       <link>/post/notes-on-python-data-science-handbook/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
