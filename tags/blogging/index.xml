@@ -18,7 +18,7 @@
       <pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/produce-a-python-blog-post-with-figures/</guid>
-      <description>To create a blog post with Python code and figures, I export an ipython notebook as a .md file. The result is a .zip file containing the .md file and images for the figures. A little modification is needed to get these files just right so that when Hugo builds my website, the post is ready to go with no blank figures. After exporting the jupyter / ipython notebook as .</description>
+      <description>To create a Hugo blog post with Python code and figures, I export an ipython notebook as a .md file. The result is a .zip file containing the .md file and images for the figures. A little modification is needed to get these files just right so that when Hugo builds my website, the post is ready to go with no blank figures. After exporting the jupyter / ipython notebook as .</description>
     </item>
     
     <item>

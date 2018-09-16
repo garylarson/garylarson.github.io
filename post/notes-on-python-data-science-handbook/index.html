@@ -6,13 +6,11 @@
   <title>Notes on Python Data Science Handbook - Gary Larson</title>
   <meta property="og:title" content="Notes on Python Data Science Handbook - Gary Larson" />
   <meta name="twitter:title" content="Notes on Python Data Science Handbook - Gary Larson" />
-  <meta name="description" content="This notebook contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is here. I forked the repo, and that clone is located on my local filesystem at
-~/github/jakevdp_PythonDataScienceHandbook  3.01 - Introducing Pandas objects The Pandas Index object (p. 105) Index objects are immutable. They can also be treated as ordered sets because
- (p106) The Index object follows many of the conventions used by Python&rsquo;s built-in set data structure, so that unions, intersections, differences, and other combinations can be computed in a familiar way.">
-  <meta property="og:description" content="This notebook contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is here. I forked the repo, and that clone is located on my local filesystem at
-~/github/jakevdp_PythonDataScienceHandbook  3.01 - Introducing Pandas objects The Pandas Index object (p. 105) Index objects are immutable. They can also be treated as ordered sets because
- (p106) The Index object follows many of the conventions used by Python&rsquo;s built-in set data structure, so that unions, intersections, differences, and other combinations can be computed in a familiar way.">
-  <meta name="twitter:description" content="This notebook contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is here. I forked the repo, and that clone is located on …">
+  <meta name="description" content="This notebook is on my local filesystem under ~/github/learning-python/notes-PDSH.ipynb and contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is here. I forked the repo, and that clone is located on my local filesystem at
+~/github/jakevdp_PythonDataScienceHandbook  Chapter 3: Data Manipulation with Pandas (p. 97) Introducing Pandas objects (p. 98) The Pandas Index object (p. 105) Index objects are immutable.">
+  <meta property="og:description" content="This notebook is on my local filesystem under ~/github/learning-python/notes-PDSH.ipynb and contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is here. I forked the repo, and that clone is located on my local filesystem at
+~/github/jakevdp_PythonDataScienceHandbook  Chapter 3: Data Manipulation with Pandas (p. 97) Introducing Pandas objects (p. 98) The Pandas Index object (p. 105) Index objects are immutable.">
+  <meta name="twitter:description" content="This notebook is on my local filesystem under ~/github/learning-python/notes-PDSH.ipynb and contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His …">
   <meta name="author" content=""/>
   <meta property="og:site_name" content="Gary Larson" />
   <meta property="og:url" content="/post/notes-on-python-data-science-handbook/" />
@@ -70,16 +68,40 @@
         </li>
       </ul>
       
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#chapter-3-data-manipulation-with-pandas-p-97">Chapter 3: Data Manipulation with Pandas (p. 97)</a>
+<ul>
+<li><a href="#introducing-pandas-objects-p-98">Introducing Pandas objects (p. 98)</a>
+<ul>
+<li><a href="#the-pandas-index-object-p-105">The Pandas Index object (p. 105)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#chapter-5-machine-learning-p-331">Chapter 5: Machine Learning (p. 331)</a>
+<ul>
+<li><a href="#in-depth-linear-regression-p-390">In Depth: Linear Regression (p. 390)</a></li>
+</ul></li>
+<li><a href="#misc-notes">Misc notes</a>
+<ul>
+<li><a href="#universal-functions-and-array-broadcasting">Universal functions and array broadcasting</a></li>
+</ul></li>
+<li><a href="#orphaned-notes-forgot-what-part-of-pdsh-i-was-looking-at">Orphaned notes (forgot what part of PDSH I was looking at)</a></li>
+</ul>
+</nav>
+</aside>
       
 
-<p>This notebook contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is <a href="https://github.com/jakevdp/PythonDataScienceHandbook">here</a>. I forked the repo, and that clone is located on my local filesystem at</p>
+<p>This notebook is on my local filesystem under <code>~/github/learning-python/notes-PDSH.ipynb</code> and contains notes I made while studying topics from the Python Data Science Handbook by Jake Vanderplas. His Github repo of the book is <a href="https://github.com/jakevdp/PythonDataScienceHandbook">here</a>. I forked the repo, and that clone is located on my local filesystem at</p>
 
 <pre><code>~/github/jakevdp_PythonDataScienceHandbook
 </code></pre>
 
-<h1 id="3-01-introducing-pandas-objects">3.01 - Introducing Pandas objects</h1>
+<h1 id="chapter-3-data-manipulation-with-pandas-p-97">Chapter 3: Data Manipulation with Pandas (p. 97)</h1>
 
-<h2 id="the-pandas-index-object-p-105">The Pandas Index object (p. 105)</h2>
+<h2 id="introducing-pandas-objects-p-98">Introducing Pandas objects (p. 98)</h2>
+
+<h3 id="the-pandas-index-object-p-105">The Pandas Index object (p. 105)</h3>
 
 <p>Index objects are immutable. They can also be treated as ordered sets because</p>
 
@@ -96,7 +118,75 @@ indA &amp; indB # intersection
 <pre><code>Int64Index([3, 5, 7], dtype='int64')
 </code></pre>
 
-<h1 id="orphaned-notes">Orphaned notes</h1>
+<h1 id="chapter-5-machine-learning-p-331">Chapter 5: Machine Learning (p. 331)</h1>
+
+<h2 id="in-depth-linear-regression-p-390">In Depth: Linear Regression (p. 390)</h2>
+
+<p>These are described as standard inputs for linear regression:</p>
+
+<pre><code class="language-python">% matplotlib inline
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+import numpy as np
+</code></pre>
+
+<p>Let&rsquo;s create some data and plot it:</p>
+
+<pre><code class="language-python">rng = np.random.RandomState(1) # GJL: setting a seed
+x = 10 * rng.rand(50)  # creates 50 random numbers in (0,10)
+y = 2 * x - 5 + rng.randn(50) # linear relationship + Gaussian noise
+plt.scatter(x,y);
+</code></pre>
+
+<p><img src="/images/notes-PDSH_10_0.png" alt="png" /></p>
+
+<p>Let&rsquo;s fit a regression:</p>
+
+<pre><code class="language-python">from sklearn.linear_model import LinearRegression
+model = LinearRegression(fit_intercept=True)
+</code></pre>
+
+<p>What is <code>model</code>? Well, remember <strong>everything in Python is an object</strong>. Try <code>help(model)</code> to see all the different elements of <code>model</code>, which, being an object, is an instance of the class <code>LinearRegression</code>.</p>
+
+<p>It seems obvious that the following <code>model.fit()</code> call modifies the fields of the <code>model</code> instance in place. That may <code>model</code> can be further used in later lines.</p>
+
+<pre><code class="language-python">model.fit(x[:, np.newaxis],y)
+</code></pre>
+
+<pre><code>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+</code></pre>
+
+<p>What is the purpose of <code>np.newaxis</code>? See <a href="https://stackoverflow.com/questions/29241056/how-does-numpy-newaxis-work-and-when-to-use-it">here</a>. Basically,</p>
+
+<blockquote>
+<p><code>np.newaxis</code> might come in handy when you want to <em>explicitly</em> convert an 1D array to either a <em>row vector</em> or a <em>column vector</em></p>
+</blockquote>
+
+<p>In my case above, <code>x[:, np.newaxis]</code> makes <code>x</code> into a <strong>column vector</strong>. I&rsquo;m not sure why the same treatment isn&rsquo;t required for <code>y</code>.</p>
+
+<h1 id="misc-notes">Misc notes</h1>
+
+<h2 id="universal-functions-and-array-broadcasting">Universal functions and array broadcasting</h2>
+
+<p>This info is also covered in PDSH. Broadcasting starts on p. 63, where it&rsquo;s defined as</p>
+
+<blockquote>
+<p>Broadcasting is simply a set of rules for applying binary ufuncs (addition, subtraction, multiplication, etc.) on arrays of different sizes.</p>
+</blockquote>
+
+<p><a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/ufuncs.html#ufuncs-broadcasting">This page</a> of the Scipy documentation describes universal functions and array broadcasting. Basically array broadcasting is the automatic adjustment of array sizes and dimensions that is done in order to make a set of arrays the same size. Here&rsquo;s a really good example from that page.</p>
+
+<p><em>Example:</em>
+If <code>a.shape</code> is (5,1), <code>b.shape</code> is (1,6), <code>c.shape</code> is (6,) and <code>d.shape</code> is () so that <code>d</code> is a scalar, then <code>a</code>, <code>b</code>, <code>c</code>, and <code>d</code> are all broadcastable to dimension (5,6); and</p>
+
+<ul>
+<li><code>a</code> acts like a (5,6) array where <code>a[:,0]</code> is broadcast to the other columns,</li>
+<li><code>b</code> acts like a (5,6) array where <code>b[0,:]</code> is broadcast to the other rows,</li>
+<li><code>c</code> acts like a (1,6) array and therefore like a (5,6) array where <code>c[:]</code> is broadcast to every row, and finally,</li>
+<li><code>d</code> acts like a (5,6) array where the single value is repeated.</li>
+</ul>
+
+<h1 id="orphaned-notes-forgot-what-part-of-pdsh-i-was-looking-at">Orphaned notes (forgot what part of PDSH I was looking at)</h1>
 
 <ul>
 <li>In Python, everything&rsquo;s an object, which means many &ldquo;things&rdquo; have two ways of calling related methods: the object-oriented way and the non object-oriented way.
