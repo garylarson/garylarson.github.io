@@ -104,6 +104,16 @@ Statistician / statistics historian Stephen Stigler was wondering why Bayes was 
     </item>
     
     <item>
+      <title>Boxes around aligned equations in LaTeX</title>
+      <link>/post/boxes-around-aligned-equations-in-latex/</link>
+      <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/boxes-around-aligned-equations-in-latex/</guid>
+      <description>Example of how to get boxes around equations in the aligned environment in LaTeX:
+\begin{equation} \boxed{ \begin{aligned} x^2 + 1 &amp;amp;= 2 \\ x^4 + 1 &amp;amp;= 3 \end{aligned} } \end{equation} I’d like to show the result, but at time of writing I realize I don’t have my workflow set up to properly render LaTeX equations in the final Hugo post. Here’s what I get instead: (if this looks right, then I must have fixed it.</description>
+    </item>
+    
+    <item>
       <title>Test new post via add-in menu</title>
       <link>/post/test-new-post-via-add-in-menu/</link>
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
