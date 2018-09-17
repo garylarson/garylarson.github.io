@@ -6,10 +6,8 @@
   <title>How I got LaTeX working with Hugo and blogdown - Gary Larson</title>
   <meta property="og:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
   <meta name="twitter:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
-  <meta name="description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has both syntax highlighting for code and LaTeX math expressions.
-To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post.">
-  <meta property="og:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has both syntax highlighting for code and LaTeX math expressions.
-To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post.">
+  <meta name="description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.">
+  <meta property="og:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.">
   <meta name="twitter:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax …">
   <meta name="author" content=""/>
   <meta property="og:site_name" content="Gary Larson" />
@@ -92,14 +90,18 @@ src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
         </li>
       </ul>
       
+<aside class="toc">
+  
+</aside>
       <div id="solution-1-of-3" class="section level1">
 <h1>Solution 1 of 3</h1>
-<p><strong>NOTE</strong>: This solution for getting LaTeX to work via MathJax requires the blog post to be in <code>.Rmd</code> format. It doesn’t work in <code>.Rmarkdown</code>. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has <em>both</em> syntax highlighting for code <em>and</em> LaTeX math expressions.</p>
-<p>To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post. The way that various websites recommend to do this is via one of Hugo’s <strong>partials</strong> files. The reason they recommend doing it via a partial is so you can load that partial in one of your template files. For example, in my theme’s <code>single.html</code> template, I see the code</p>
-<pre class="html"><code>{{ partial &quot;share.html&quot; . }}</code></pre>
-<p>which ensures that the partial for sharing is included by default on every single-type post. Many sources recommend inserting the MathJax code into a parial such as <code>header.html</code> or <code>footer.html</code> – something that’s guaranteed to get loaded in every post – but those partials aren’t included in my <code>single.html</code> template. So I just created a new partial called <code>GJL_mathjax.html</code>, and in my <code>single.html</code> template, below the line <code>{{ partial &quot;share.html&quot; . }}</code>, I added</p>
+<p><strong>NOTE</strong>: This solution for getting LaTeX to work via MathJax requires the blog post to be in <code>.Rmd</code> format. It doesn’t work in <code>.Rmarkdown</code>. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has <em>both</em> syntax highlighting for code (requires <code>.Rmarkdown</code>) <em>and</em> LaTeX math expressions (requires <code>.Rmd</code>). (Hey, wait! The syntax highlighting for the <code>GJL_mathjax.html</code> code lower down in this post <strong>does</strong> work. I don’t know if Python and R highlighting would work though?)</p>
+<p>To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post. The way that various websites recommend to do this is via one of Hugo’s <a href="https://gohugo.io/templates/partials/"><strong>partial</strong> template files</a>. The reason they recommend doing it via a partial is so you can load that partial in one of your template files. For example, in my theme’s <code>single.html</code> template, I see the code</p>
+<pre><code>{{ partial &quot;share.html&quot; . }}</code></pre>
+<p>which ensures that the partial for sharing is included by default on every post of type “single”. Many sources recommend inserting the MathJax code into a partial such as <code>header.html</code> or <code>footer.html</code> – something that’s guaranteed to get loaded in every post – but those partials aren’t included in my <code>single.html</code> template. So I just created a new partial called <code>GJL_mathjax.html</code>, and in my <code>single.html</code> template, below the line <code>{{ partial &quot;share.html&quot; . }}</code>, I added</p>
 <pre class="html"><code>{{ partial &quot;GJL_mathjax.html&quot; . }}</code></pre>
-<p>and now things work! So the result of <code>$x=5$</code> is <span class="math inline">\(x=5\)</span>, and the result of <code>$$x=5$$</code> is <span class="math display">\[x=5\]</span>. The content of <code>GJL_mathjax.html</code> is:</p>
+<p>This ensures the MathJax bit of code (from <code>GJL_mathjax.html</code>) gets inserted in every post of type “single”, and now things work! So the result of <code>$x=5$</code> is <span class="math inline">\(x=5\)</span>, and the result of <code>$$x=5$$</code> is <span class="math display">\[x=5\]</span></p>
+<p>The content of <code>GJL_mathjax.html</code> is:</p>
 <pre><code>&lt;script src=&quot;//yihui.name/js/math-code.js&quot;&gt;&lt;/script&gt;
 &lt;script async
 src=&quot;//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
@@ -113,7 +115,7 @@ src=&quot;//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quo
 </div>
 <div id="solution-3-of-3" class="section level1">
 <h1>Solution 3 of 3</h1>
-<p>Here’s <a href="https://github.com/yihui/hugo-lithium/blob/7d436d803df90c873cdaecf24aeeff827696d77c/layouts/partials/footer.html#L21-L30">some other snippet</a> that Yihui put into his <code>footer.html</code> in his Lithium theme:</p>
+<p>There’s another apparently independent solution Yihui used … here’s <a href="https://github.com/yihui/hugo-lithium/blob/7d436d803df90c873cdaecf24aeeff827696d77c/layouts/partials/footer.html#L21-L30">some other snippet</a> that Yihui put into his <code>footer.html</code> in his Lithium theme:</p>
 <pre class="html"><code>    &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
     MathJax.Hub.Config({
       tex2jax: {
