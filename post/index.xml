@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; Copyright 2018 Gary Larson</copyright>
-    <lastBuildDate>Sat, 08 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How I got LaTeX working with Hugo and blogdown</title>
+      <link>/post/how-i-got-latex-working-with-hugo-and-blogdown/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-i-got-latex-working-with-hugo-and-blogdown/</guid>
+      <description>Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has both syntax highlighting for code and LaTeX math expressions.
+To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post.</description>
+    </item>
     
     <item>
       <title>Produce a Python blog post with figures</title>
@@ -59,8 +69,8 @@ class Test: def __init__(self): self.</description>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/syntax-highlighting-for-a-hugo-data-science-blog/</guid>
-      <description>This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&amp;rsquo;d probably use Amber&amp;rsquo;s more thorough post as a guide. It stands alone better than my post here.
-Background Hugo comes with a built-in, default syntax highlighting system called Chroma.</description>
+      <description>NOTE: I believe this requires the post to be in .Rmarkdown format, and that an .Rmd post will not have the syntax highlighting.
+This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&amp;rsquo;d probably use Amber&amp;rsquo;s more thorough post as a guide.</description>
     </item>
     
     <item>

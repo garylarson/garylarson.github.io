@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>How I got LaTeX working with Hugo and blogdown - Gary Larson</title>
+  <meta property="og:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
+  <meta name="twitter:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
+  <meta name="description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has both syntax highlighting for code and LaTeX math expressions.
+To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post.">
+  <meta property="og:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has both syntax highlighting for code and LaTeX math expressions.
+To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post.">
+  <meta name="twitter:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax …">
+  <meta name="author" content=""/>
+  <meta property="og:site_name" content="Gary Larson" />
+  <meta property="og:url" content="/post/how-i-got-latex-working-with-hugo-and-blogdown/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.45.1" />
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/">Gary Larson</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-research"><a href="/research/" title="Research">Research</a></li>
+      <li class="site-navi-item-post"><a href="/post/" title="Posts">Posts</a></li>
+      <li class="site-navi-item-teaching"><a href="/teaching/" title="Teaching">Teaching</a></li>
+    </ul>
+  </nav>
+  
+  <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+</header>
+<hr class="site-header-bottom">
+
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">How I got LaTeX working with Hugo and blogdown</h1>
+      
+      
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+  
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>September 17, 2018</time></li>
+        <li class="article-meta-tags">
+          <a href="/tags/blogging/">
+            <i class="fas fa-tag"></i>
+            blogging
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/hugo/">
+            <i class="fas fa-tag"></i>
+            hugo
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/latex/">
+            <i class="fas fa-tag"></i>
+            LaTeX
+          </a>&nbsp;
+        </li>
+        <li class="article-meta-tags">
+          <a href="/tags/syntax-highlighting/">
+            <i class="fas fa-tag"></i>
+            syntax highlighting
+          </a>&nbsp;
+        </li>
+      </ul>
+      
+      <div id="solution-1-of-3" class="section level1">
+<h1>Solution 1 of 3</h1>
+<p><strong>NOTE</strong>: This solution for getting LaTeX to work via MathJax requires the blog post to be in <code>.Rmd</code> format. It doesn’t work in <code>.Rmarkdown</code>. And recall, the latter is needed for my syntax highlighting to work. So until I get this fixed, I apparently can’t have a post that has <em>both</em> syntax highlighting for code <em>and</em> LaTeX math expressions.</p>
+<p>To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post. The way that various websites recommend to do this is via one of Hugo’s <strong>partials</strong> files. The reason they recommend doing it via a partial is so you can load that partial in one of your template files. For example, in my theme’s <code>single.html</code> template, I see the code</p>
+<pre class="html"><code>{{ partial &quot;share.html&quot; . }}</code></pre>
+<p>which ensures that the partial for sharing is included by default on every single-type post. Many sources recommend inserting the MathJax code into a parial such as <code>header.html</code> or <code>footer.html</code> – something that’s guaranteed to get loaded in every post – but those partials aren’t included in my <code>single.html</code> template. So I just created a new partial called <code>GJL_mathjax.html</code>, and in my <code>single.html</code> template, below the line <code>{{ partial &quot;share.html&quot; . }}</code>, I added</p>
+<pre class="html"><code>{{ partial &quot;GJL_mathjax.html&quot; . }}</code></pre>
+<p>and now things work! So the result of <code>$x=5$</code> is <span class="math inline">\(x=5\)</span>, and the result of <code>$$x=5$$</code> is <span class="math display">\[x=5\]</span>. The content of <code>GJL_mathjax.html</code> is:</p>
+<pre><code>&lt;script src=&quot;//yihui.name/js/math-code.js&quot;&gt;&lt;/script&gt;
+&lt;script async
+src=&quot;//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+&lt;/script&gt;
+&lt;!-- The above block is from https://bookdown.org/yihui/blogdown/templates.html  --&gt;</code></pre>
+<p>The above code can be found under the bullet “Support math expressions through MathJax”.</p>
+</div>
+<div id="solution-2-of-3" class="section level1">
+<h1>Solution 2 of 3</h1>
+<p>I could also try <a href="https://github.com/rstudio/blogdown/issues/36#issuecomment-272940486">this other solution</a>. Yihui comments that his solution (solution 1, above) is better and avoids some “potential problem.” But perhaps this solution would allow the LaTeX math to work with <code>.Rmarkdown</code> files (instead of only working with <code>.Rmd</code> files, for which I can’t get syntax highlighting to work!).</p>
+</div>
+<div id="solution-3-of-3" class="section level1">
+<h1>Solution 3 of 3</h1>
+<p>Here’s <a href="https://github.com/yihui/hugo-lithium/blob/7d436d803df90c873cdaecf24aeeff827696d77c/layouts/partials/footer.html#L21-L30">some other snippet</a> that Yihui put into his <code>footer.html</code> in his Lithium theme:</p>
+<pre class="html"><code>    &lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;]
+      }
+    });
+    &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;
+      src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+    &lt;/script&gt;</code></pre>
+</div>
+
+    </article>
+
+    
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+</ul>
+
+    <div class="disqus-comments">
+      
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'garylarson-github-io';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older">
+        <a href="/post/produce-a-python-blog-post-with-figures/" data-toggle="tooltip" data-placement="top" title="Produce a Python blog post with figures">Older &gt;</a>
+      </li>
+    </ul>
+  </div>
+
+
+<div class="site-footer">
+  <div class="copyright">&copy; Copyright 2018 Gary Larson</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-about"><a href="/about/" title="About">About</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="/js/custom.js"></script>
+
+
+</body>
+</html>
