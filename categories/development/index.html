@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Syntax Highlighting - Gary Larson</title>
-  <meta property="og:title" content="Syntax Highlighting - Gary Larson" />
-  <meta name="twitter:title" content="Syntax Highlighting - Gary Larson" />
+  <title>Development - Gary Larson</title>
+  <meta property="og:title" content="Development - Gary Larson" />
+  <meta name="twitter:title" content="Development - Gary Larson" />
   <meta name="author" content=""/>
   <meta property="og:site_name" content="Gary Larson" />
-  <meta property="og:url" content="/tags/syntax-highlighting/" />
+  <meta property="og:url" content="/categories/development/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <meta name="generator" content="Hugo 0.45.1" />
-  <link href="/tags/syntax-highlighting/index.xml" rel="alternate" type="application/rss+xml" title="Gary Larson" />
-  <link href="/tags/syntax-highlighting/index.xml" rel="feed" type="application/rss+xml" title="Gary Larson" />
+  <link href="/categories/development/index.xml" rel="alternate" type="application/rss+xml" title="Gary Larson" />
+  <link href="/categories/development/index.xml" rel="feed" type="application/rss+xml" title="Gary Larson" />
   <link rel="stylesheet" href="/css/style.css" media="all" />
   <link rel="stylesheet" href="/css/syntax.css" media="all" />
   <link rel="stylesheet" href="/css/custom.css" media="all" />
@@ -42,78 +42,66 @@
 
 
   <div class="breadcrumb">
-    <a href="/tags/">Tags</a> / Syntax highlighting
+    <a href="/categories/">Categories</a> / Development
   </div>
   <div class="main" role="main">
     <section class="list taxonomy-list">
       <article class="article">
-        <a href="/post/how-i-got-latex-working-with-hugo-and-blogdown/" class="article-titles">
-          <h2 class="article-title">How I got LaTeX working with Hugo and blogdown</h2>
+        <a href="/post_original-from-theme/goisforlovers/" class="article-titles">
+          <h2 class="article-title">(Hu)go Template Primer</h2>
           
         </a>
         <ul class="article-meta">
-          <li class="article-meta-date"><time>September 17, 2018</time></li>
-          <li class="article-meta-tags">
-            <a href="/tags/blogging/">
-              <i class="fas fa-tag"></i>
-              blogging
+          <li class="article-meta-date"><time>April 2, 2014</time></li>
+          <li class="article-meta-categories">
+            <a href="/categories/development/">
+              <i class="fas fa-folder"></i>
+              Development
+            </a>&nbsp;
+          </li>
+          <li class="article-meta-categories">
+            <a href="/categories/golang/">
+              <i class="fas fa-folder"></i>
+              golang
             </a>&nbsp;
           </li>
           <li class="article-meta-tags">
-            <a href="/tags/hugo/">
+            <a href="/tags/go/">
               <i class="fas fa-tag"></i>
-              hugo
+              go
             </a>&nbsp;
           </li>
           <li class="article-meta-tags">
-            <a href="/tags/latex/">
+            <a href="/tags/golang/">
               <i class="fas fa-tag"></i>
-              LaTeX
+              golang
             </a>&nbsp;
           </li>
           <li class="article-meta-tags">
-            <a href="/tags/syntax-highlighting/">
+            <a href="/tags/templates/">
               <i class="fas fa-tag"></i>
-              syntax highlighting
+              templates
+            </a>&nbsp;
+          </li>
+          <li class="article-meta-tags">
+            <a href="/tags/themes/">
+              <i class="fas fa-tag"></i>
+              themes
+            </a>&nbsp;
+          </li>
+          <li class="article-meta-tags">
+            <a href="/tags/development/">
+              <i class="fas fa-tag"></i>
+              development
             </a>&nbsp;
           </li>
         </ul>
         <div class="article-content">
-          Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
-And the typical inline $x=5$ gives you \(x=5\).
- Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .
+          Hugo uses the excellent [go][] [html/template][gohtmltemplate] library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.
         </div>
         
-          <div class="article-readmore"><a href="/post/how-i-got-latex-working-with-hugo-and-blogdown/">Read more...</a></div>
-        
-        <div class="article-floatclear"></div>
-      </article>
-      <article class="article">
-        <a href="/post/syntax-highlighting-for-a-hugo-data-science-blog/" class="article-titles">
-          <h2 class="article-title">Syntax highlighting for a Hugo data science blog</h2>
-          
-        </a>
-        <ul class="article-meta">
-          <li class="article-meta-date"><time>August 22, 2018</time></li>
-          <li class="article-meta-tags">
-            <a href="/tags/blogging/">
-              <i class="fas fa-tag"></i>
-              blogging
-            </a>&nbsp;
-          </li>
-          <li class="article-meta-tags">
-            <a href="/tags/syntax-highlighting/">
-              <i class="fas fa-tag"></i>
-              syntax highlighting
-            </a>&nbsp;
-          </li>
-        </ul>
-        <div class="article-content">
-          NOTE: I believe this requires the post to be in .Rmarkdown format, and that an .Rmd post will not have the syntax highlighting.
-This post explains how I set up my Hugo blog (with the Whiteplain theme) to get the type of syntax highlighting I want for data science / statistics purposes. I relied heavily on this post from Amber Thomas. Thanks a lot Amber! If I were you, I&rsquo;d probably use Amber&rsquo;s more thorough post as a guide.
-        </div>
-        
-          <div class="article-readmore"><a href="/post/syntax-highlighting-for-a-hugo-data-science-blog/">Read more...</a></div>
+          <div class="article-readmore"><a href="/post_original-from-theme/goisforlovers/">Read more...</a></div>
         
         <div class="article-floatclear"></div>
       </article>
@@ -128,7 +116,7 @@ This post explains how I set up my Hugo blog (with the Whiteplain theme) to get 
   <div class="copyright">&copy; Copyright 2018 Gary Larson</div>
   <ul class="site-footer-items">
     <li class="site-footer-item-rsslink">
-      <a href="/tags/syntax-highlighting/index.xml" type="application/rss+xml" target="_blank" title="RSS">
+      <a href="/categories/development/index.xml" type="application/rss+xml" target="_blank" title="RSS">
         <i class="fas fa-rss"></i>
       </a>
     </li>

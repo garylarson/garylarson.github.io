@@ -6,9 +6,14 @@
   <title>How I got LaTeX working with Hugo and blogdown - Gary Larson</title>
   <meta property="og:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
   <meta name="twitter:title" content="How I got LaTeX working with Hugo and blogdown - Gary Larson" />
-  <meta name="description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.">
-  <meta property="og:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.">
-  <meta name="twitter:description" content="Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax …">
+  <meta name="description" content="Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
+And the typical inline $x=5$ gives you \(x=5\).
+ Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .">
+  <meta property="og:description" content="Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
+And the typical inline $x=5$ gives you \(x=5\).
+ Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .">
+  <meta name="twitter:description" content="Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
+And the typical inline $x=5$ …">
   <meta name="author" content=""/>
   <meta property="og:site_name" content="Gary Larson" />
   <meta property="og:url" content="/post/how-i-got-latex-working-with-hugo-and-blogdown/" />
@@ -93,13 +98,18 @@ src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 <aside class="toc">
   
 </aside>
-      <div id="solution-1-of-3" class="section level1">
+      <div id="solution-0-of-3" class="section level1">
+<h1>Solution 0 of 3</h1>
+<p>First of all, <strong>if you need LaTeX but don’t need any R code</strong>, just write the post in <code>.md</code>. Then you can use full-line equations like <code>$$x=5$$</code> to get <span class="math display">\[x=5\]</span></p>
+<p>And the typical inline <code>$x=5$</code> gives you <span class="math inline">\(x=5\)</span>.</p>
+</div>
+<div id="solution-1-of-3" class="section level1">
 <h1>Solution 1 of 3</h1>
 <p><strong>NOTE</strong>: This solution for getting LaTeX to work via MathJax requires the blog post to be in <code>.Rmd</code> format. It doesn’t work in <code>.Rmarkdown</code>. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has <em>both</em> syntax highlighting for code (requires <code>.Rmarkdown</code>) <em>and</em> LaTeX math expressions (requires <code>.Rmd</code>). (Hey, wait! The syntax highlighting for the <code>GJL_mathjax.html</code> code lower down in this post <strong>does</strong> work. I don’t know if Python and R highlighting would work though?)</p>
 <p>To get LaTeX expressions to work the way you’d expect, you have to put some MathJax code in the relevant post. The way that various websites recommend to do this is via one of Hugo’s <a href="https://gohugo.io/templates/partials/"><strong>partial</strong> template files</a>. The reason they recommend doing it via a partial is so you can load that partial in one of your template files. For example, in my theme’s <code>single.html</code> template, I see the code</p>
 <pre><code>{{ partial &quot;share.html&quot; . }}</code></pre>
 <p>which ensures that the partial for sharing is included by default on every post of type “single”. Many sources recommend inserting the MathJax code into a partial such as <code>header.html</code> or <code>footer.html</code> – something that’s guaranteed to get loaded in every post – but those partials aren’t included in my <code>single.html</code> template. So I just created a new partial called <code>GJL_mathjax.html</code>, and in my <code>single.html</code> template, below the line <code>{{ partial &quot;share.html&quot; . }}</code>, I added</p>
-<pre class="html"><code>{{ partial &quot;GJL_mathjax.html&quot; . }}</code></pre>
+<pre><code>{{ partial &quot;GJL_mathjax.html&quot; . }}</code></pre>
 <p>This ensures the MathJax bit of code (from <code>GJL_mathjax.html</code>) gets inserted in every post of type “single”, and now things work! So the result of <code>$x=5$</code> is <span class="math inline">\(x=5\)</span>, and the result of <code>$$x=5$$</code> is <span class="math display">\[x=5\]</span></p>
 <p>The content of <code>GJL_mathjax.html</code> is:</p>
 <pre><code>&lt;script src=&quot;//yihui.name/js/math-code.js&quot;&gt;&lt;/script&gt;
@@ -108,6 +118,23 @@ src=&quot;//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quo
 &lt;/script&gt;
 &lt;!-- The above block is from https://bookdown.org/yihui/blogdown/templates.html  --&gt;</code></pre>
 <p>The above code can be found under the bullet “Support math expressions through MathJax”.</p>
+<div id="testing-this-solution-on-r-code" class="section level2">
+<h2>Testing this solution on R code</h2>
+<p>Does this syntax highlighting show up right?</p>
+<pre class="r"><code>myFunction &lt;- function(f,g,h){
+    print(&#39;Hi Mom&#39;)
+    return (f*g*h^2)
+}</code></pre>
+</div>
+<div id="testing-this-solution-on-python-code" class="section level2">
+<h2>Testing this solution on Python code</h2>
+<p>How about this python code, with the three backticks in the code fence followed by <code>python</code>?</p>
+<pre class="python"><code>x = [1, 2, 3, 4, 5]
+print(x[0:4])</code></pre>
+<p>And how about without the <code>python</code> – just the typical plain code fence?</p>
+<pre><code>x = [1, 2, 3, 4, 5]
+print(x[0:4])</code></pre>
+</div>
 </div>
 <div id="solution-2-of-3" class="section level1">
 <h1>Solution 2 of 3</h1>
