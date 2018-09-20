@@ -18,9 +18,7 @@
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/how-i-got-latex-working-with-hugo-and-blogdown/</guid>
-      <description>Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
-And the typical inline $x=5$ gives you \(x=5\).
- Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .</description>
+      <description>Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.</description>
     </item>
     
     <item>

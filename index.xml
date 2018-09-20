@@ -13,14 +13,22 @@
     
     
     <item>
+      <title>The Curse of Dimensionality</title>
+      <link>/post/the-curse-of-dimensionality/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-curse-of-dimensionality/</guid>
+      <description>The current Wikipedia entry on the curse of dimensionality describes the problem well with respect to having enough data for a problem, and also with respect to distance functions. I’m copying these entries here, in case they change or disappear later.
+Sampling There is an exponential increase in volume associated with adding extra dimensions to a mathematical space. For example, \(10^2=100\) evenly spaced sample points suffice to sample a unit interval (a “1-dimensional cube”) with no more than \(10^{−2}=0.</description>
+    </item>
+    
+    <item>
       <title>How I got LaTeX working with Hugo and blogdown</title>
       <link>/post/how-i-got-latex-working-with-hugo-and-blogdown/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/how-i-got-latex-working-with-hugo-and-blogdown/</guid>
-      <description>Solution 0 of 3 First of all, if you need LaTeX but don’t need any R code, just write the post in .md. Then you can use full-line equations like $$x=5$$ to get \[x=5\]
-And the typical inline $x=5$ gives you \(x=5\).
- Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .</description>
+      <description>Solution 1 of 3 NOTE: This solution for getting LaTeX to work via MathJax requires the blog post to be in .Rmd format. It doesn’t work in .Rmarkdown. And recall, the latter is needed for my syntax highlighting to work. So currently I don’t know how to create a post that has both syntax highlighting for code (requires .Rmarkdown) and LaTeX math expressions (requires .Rmd). (Hey, wait! The syntax highlighting for the GJL_mathjax.</description>
     </item>
     
     <item>
